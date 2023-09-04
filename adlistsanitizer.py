@@ -93,7 +93,7 @@ if os.path.exists(url_file):
     output_file_path = 'output.txt'
 
     with open("master.txt", "r") as master:
-        function_list = remove_duplicated(master.readlines())
+        function_list = remove_duplicates(master.readlines())
 
     sanity_file_path = 'sanity.txt'
 
