@@ -26,10 +26,8 @@ jobs:
       run: python adlistsanitizer.py
 
     - name: Create Release
-      uses: actions/create-release@v1
+      uses: djnicholson/release-action@v2.11
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        body: New release of sanity.py
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+        asset-name: 'Sanity.txt'
+        file: 'sanity.txt'
