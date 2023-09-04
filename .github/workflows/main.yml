@@ -27,7 +27,7 @@ jobs:
 
     - name: Commit and push sanity.txt
       run: |
-        git config --local user.email "nilsbriggen@gmail.com"
-        git config --local user.name "NilsBriggen
+        git config --local user.email "<>"
+        git config --local user.name "Github Actions Bot"
         git commit -m "Add sanity.txt"
         git push
