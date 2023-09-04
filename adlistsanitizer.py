@@ -55,52 +55,9 @@ def merge_files():
         f.write(merged_content)
     print('Adlists got merged into master.txt')
 
-# extract domain names
-def extract_domain_names(file_path):
-    with open(file_path, 'r') as file:
-        content = file.read()
-
-        # Pattern
-        pattern = r'(?:[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*\.)+[a-zA-Z]{2,}'
-
-        # Search for matching patterns
-        matches = re.findall(pattern, content)
-
-        # get rid of www.
-        domain_names = [re.sub(r'^www\.', '', match) for match in matches]
-        domain_names = ["||" + match for match in domain_names]
-
-        # return cleaned domain names
-        return domain_names
-
 # Remove duplicates
 def remove_duplicates(input_list):
     return list(set(input_list))
-
-# Ask if User wants to delete specific domains from sanity.txt
-def delete_domains(delete_domains):
-    # Load sanity.txt
-    sanity_file_path = 'sanity.txt'
-    with open(sanity_file_path, 'r') as sanity_file:
-        domain_names = sanity_file.read().splitlines()
-
-    # Domainname entries
-    num_entries_before = len(domain_names)
-
-    # Delete Domain from List
-    updated_domains = [domain for domain in domain_names if domain not in delete_domains]
-
-    # rewrite sanity.txt
-    with open(sanity_file_path, 'w') as sanity_file:
-        sanity_file.write("! Title: Nils Filter\n! Description: Merge of some good filters to make a better filter list.\n! Version: 1.0\n! Expires: 2 hours\n! Homepage: https://github.com/nilsbriggen/AdList-Creator/\n")
-        for domain_name in updated_domains:
-            sanity_file.write(domain_name + '\n')
-
-    # Calculation of entries
-    num_entries_deleted = num_entries_before - len(updated_domains)
-
-    print(f'These Domains got deleted from sanity.txt: {", ".join(delete_domains)}')
-    print(f'{num_entries_deleted} got deleted with its subdomains.')
 
 # delete temporary data function
 def delete_files():
@@ -122,13 +79,8 @@ def delete_files():
 
 # Statistics and output
 def display_entry_stats():
-    num_entries_master = len(domain_names)
-    num_entries_sanity = len(unique_domain_names)
-    percentage_difference = (num_entries_sanity / num_entries_master) * 100
+    print(f"master.txt has {len(function_list)} Number of Rules.")
 
-    print(f"master.txt has {num_entries_master} Number of Domains.")
-    print(f"The sanitized 'sanity.txt' has {num_entries_sanity} Number of Domains.")  
-    print(f"The final list is just {percentage_difference:.2f}% the size of master.txt.")
 
 # main
 if os.path.exists(url_file):
@@ -137,24 +89,18 @@ if os.path.exists(url_file):
         download_files(urls)
     merge_files()
 
-    # extract domains
-    domain_names = extract_domain_names('master.txt')
-
     # put domain names into output.txt
     output_file_path = 'output.txt'
 
-    with open(output_file_path, 'w') as output_file:
-        for domain_name in domain_names:
-            output_file.write(domain_name + '\n')
+    with open("master.txt", "r") as master:
+        function_list = remove_duplicated(master.readlines())
 
-    # delete duplicated and save in sanity.txt
-    unique_domain_names = remove_duplicates(domain_names)
     sanity_file_path = 'sanity.txt'
 
     with open(sanity_file_path, 'w') as sanity_file:
         sanity_file.write("! Title: Nils Filter\n! Description: Merge of some good filters to make a better filter list.\n! Version: 1.0\n! Expires: 2 hours\n! Homepage: https://github.com/nilsbriggen/AdList-Creator/\n")
-        for domain_name in unique_domain_names:
-            sanity_file.write(domain_name + '\n')
+        for functions in function_list:
+            sanity_file.write(functions + '\n')
 
     display_entry_stats()
 else:
