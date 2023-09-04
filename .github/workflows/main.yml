@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '0 */1 * * *'  # Runs every 2 hours
   workflow_dispatch:
+  push:
+    paths-ignore:
+      - 'sanity.txt'
 
 jobs:
   build:
