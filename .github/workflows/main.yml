@@ -21,7 +21,6 @@ jobs:
     - name: Install dependencies
       run: |
         pip install requests 
-        pip install re
 
     - name: Run adlistsanitizer.py
       run: python adlistsanitizer.py
