@@ -1,4 +1,4 @@
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/multi.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/gambling.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.tiktok.txt
