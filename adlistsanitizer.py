@@ -68,6 +68,7 @@ def extract_domain_names(file_path):
 
         # get rid of www.
         domain_names = [re.sub(r'^www\.', '', match) for match in matches]
+        domain_names = ["||" + match for match in domain_names]
 
         # return cleaned domain names
         return domain_names
