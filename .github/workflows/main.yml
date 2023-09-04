@@ -29,6 +29,6 @@ jobs:
       run: |
         git config --local user.email "<>"
         git config --local user.name "Github Actions Bot"
-        git add "sanity.txt"
+        git add sanity.txt
         git commit -m "Add sanity.txt"
         git push
