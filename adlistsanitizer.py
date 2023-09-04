@@ -143,6 +143,7 @@ if os.path.exists(url_file):
     output_file_path = 'output.txt'
 
     with open(output_file_path, 'w') as output_file:
+        output_file.write("! Title: Nils Filter\n! Description: Merge of some good filters to make a better filter list.\n! Version: 1.0\n! Expires: 2 hours\n! Homepage: https://github.com/nilsbriggen/AdList-Creator/\n")
         for domain_name in domain_names:
             output_file.write(domain_name + '\n')
 
