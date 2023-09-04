@@ -100,7 +100,7 @@ if os.path.exists(url_file):
     with open(sanity_file_path, 'w') as sanity_file:
         sanity_file.write("! Title: Nils Filter\n! Description: Merge of some good filters to make a better filter list.\n! Version: 1.0\n! Expires: 2 hours\n! Homepage: https://github.com/nilsbriggen/AdList-Creator/\n")
         for functions in function_list:
-            sanity_file.write(functions + '\n')
+            sanity_file.write(functions)
 
     display_entry_stats()
 else:
