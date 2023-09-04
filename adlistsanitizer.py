@@ -119,22 +119,6 @@ def delete_files():
         os.remove('master.txt')
         print("'master.txt' got deleted.")
 
-# Ask if ..
-def prompt_user():
-    while True:
-        delete_option = input('Do you want to remove some Domains (google.com) from sanity.txt? (y/n): ')
-        if delete_option.lower() == 'y':
-            domains_to_delete = input('Enter the Domains you want to delete seperated by space: ')
-            delete_domains(domains_to_delete.split())
-        elif delete_option.lower() == 'n':
-            break
-        else:
-            print('Invalid input please enter "y" or "n".')
-
-    delete_files_option = input('Do you want to delete temporary files and folders? (y/n)')
-    if delete_files_option.lower() == 'y':
-        delete_files()
-
 # Statistics and output
 def display_entry_stats():
     num_entries_master = len(domain_names)
@@ -171,7 +155,6 @@ if os.path.exists(url_file):
         for domain_name in unique_domain_names:
             sanity_file.write(domain_name + '\n')
 
-    prompt_user()
     display_entry_stats()
 else:
     print(f'Can not find "{url_file}"')
