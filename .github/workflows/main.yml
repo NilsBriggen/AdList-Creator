@@ -25,9 +25,10 @@ jobs:
     - name: Run adlistsanitizer.py
       run: python adlistsanitizer.py
 
-    - name: Create Release
-      uses: djnicholson/release-action@v2.11
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        asset-name: 'Sanity.txt'
-        file: 'sanity.txt'
+    - name: Commit and push sanity.txt
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add sanity.txt
+        git commit -m "Add sanity.txt"
+        git push
