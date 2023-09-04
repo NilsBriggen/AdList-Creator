@@ -1,0 +1,34 @@
+name: Run Python Script and Create Release
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'  # Runs every 2 hours
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install requests re
+
+    - name: Run adlistsanitizer.py
+      run: python adlistsanitizer.py
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        body: New release of sanity.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
