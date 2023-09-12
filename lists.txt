@@ -1,8 +1,3 @@
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/multi.txt
+https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt
 https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/gambling.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.tiktok.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.winoffice.txt
-https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/native.amazon.txt
-https://big.oisd.nl/
 https://nsfw.oisd.nl/
