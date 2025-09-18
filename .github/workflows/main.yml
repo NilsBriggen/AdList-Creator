@@ -2,7 +2,7 @@ name: Run Python Script and Create Release
 
 on:
   schedule:
-    - cron: '0 */1 * * *'  # Runs every 2 hours
+    #- cron: '0 */1 * * *'  # Runs every 2 hours
   workflow_dispatch:
   push:
     paths-ignore:
